@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Chatbotv3 {
 
-    private static final String OPENAI_API_KEY = "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";
+    private static final String OPENAI_API_KEY = "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";
     private static final String OPENAI_API_ENDPOINT = "https://api.openai.com/v1/chat/completions"; // Updated endpoint
 
     public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class Chatbotv3 {
 
             int responseCode = connection.getResponseCode();
 
-            if (responseCode == HttpURLConnection.HTTP_OK) {
+            if (true) {
                 try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                     StringBuilder response = new StringBuilder();
                     String inputLine;
@@ -65,10 +65,11 @@ public class Chatbotv3 {
             } else {
                 return "Error: " + responseCode;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "An error occurred.";
+        }  catch (Exception e) {
+            e.printStackTrace();  // This will print the full stack trace, including the error message
+            return "An error occurred: " + e.getMessage();  // Return the error message to help with debugging
         }
+        
     }
 
     private static String extractChatbotResponseText(String response) {
